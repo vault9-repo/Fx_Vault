@@ -1,0 +1,1459 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FxVault | Premium Forex Insights</title>
+
+    <meta
+        name="description"
+        content="FxVault — Premium forex setups, market analysis and exclusive trading insights."
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #ffffff;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 35%,
+                    rgba(120, 70, 28, 0.18),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(75, 40, 16, 0.14),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    120deg,
+                    #020202 0%,
+                    #0b0806 35%,
+                    #100a06 50%,
+                    #050403 75%,
+                    #010101 100%
+                );
+
+            min-height: 100vh;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
+
+        .background {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+        }
+
+
+        .glow {
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            border-radius: 50%;
+
+            filter: blur(50px);
+
+            opacity: .55;
+        }
+
+
+        .glow-left {
+
+            left: -400px;
+
+            top: 5%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(145, 82, 30, .22),
+                    transparent 68%
+                );
+        }
+
+
+        .glow-right {
+
+            right: -400px;
+
+            bottom: -15%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(95, 52, 21, .16),
+                    transparent 68%
+                );
+        }
+
+
+        /* =====================================================
+           SUBTLE GRID
+        ===================================================== */
+
+        .grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .06;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.15) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.15) 1px,
+                    transparent 1px
+                );
+
+            background-size: 70px 70px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    black 25%,
+                    black 70%,
+                    transparent
+                );
+        }
+
+
+        /* =====================================================
+           MARKET WAVE LINES
+        ===================================================== */
+
+        .wave {
+
+            position: absolute;
+
+            width: 75%;
+
+            height: 260px;
+
+            border-top:
+                1px solid
+                rgba(174, 108, 46, .13);
+
+            border-radius: 50%;
+
+            opacity: .65;
+        }
+
+
+        .wave.one {
+
+            left: -18%;
+
+            bottom: 12%;
+
+            transform:
+                rotate(-13deg);
+        }
+
+
+        .wave.two {
+
+            left: -17%;
+
+            bottom: 8%;
+
+            transform:
+                rotate(-13deg);
+
+            opacity: .35;
+        }
+
+
+        .wave.three {
+
+            right: -18%;
+
+            bottom: 12%;
+
+            transform:
+                rotate(13deg);
+        }
+
+
+        .wave.four {
+
+            right: -17%;
+
+            bottom: 8%;
+
+            transform:
+                rotate(13deg);
+
+            opacity: .35;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            position: relative;
+
+            z-index: 2;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding:
+                45px
+                20px;
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            text-align: center;
+
+            animation:
+                pageFade 1s ease forwards;
+        }
+
+
+        /* =====================================================
+           FXVAULT HEADER
+        ===================================================== */
+
+        .logo {
+
+            font-size:
+                clamp(
+                    58px,
+                    8vw,
+                    105px
+                );
+
+            font-weight: 900;
+
+            line-height: 1;
+
+            letter-spacing: -6px;
+
+            margin-bottom: 18px;
+
+            /*
+             * FX = brighter white
+             */
+
+            color: #ffffff;
+        }
+
+
+        .logo .fx {
+
+            background:
+
+                linear-gradient(
+                    100deg,
+                    #ffffff 0%,
+                    #f5f1eb 100%
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+
+        /*
+         * VAULT = DARK BROWN / BLACK
+         */
+
+        .logo .vault {
+    background:
+        linear-gradient(
+            100deg,
+            #d8a15d 0%,
+            #c28745 25%,
+            #ad7034 50%,
+            #955b28 75%,
+            #7d491f 100%
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    text-shadow:
+        0 6px 25px rgba(139, 82, 30, 0.22);
+}
+
+
+        /* =====================================================
+           TAGLINE
+        ===================================================== */
+
+        .tagline {
+
+            font-size: 13px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+
+            color: #ded9d2;
+
+            margin-bottom: 43px;
+        }
+
+
+        /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+        .divider {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .divider-line {
+
+            width: 55px;
+
+            height: 1px;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #b97532
+                );
+        }
+
+
+        .divider-line.right {
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #b97532,
+                    transparent
+                );
+        }
+
+
+        .divider-dot {
+
+            width: 13px;
+
+            height: 13px;
+
+            border-radius: 50%;
+
+            background:
+                #bf8040;
+
+            box-shadow:
+                0 0 18px
+                rgba(191, 128, 64, .55);
+        }
+
+
+        /* =====================================================
+           HEADLINE
+        ===================================================== */
+
+        h1 {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(
+                    45px,
+                    6vw,
+                    78px
+                );
+
+            line-height: .98;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 32px;
+        }
+
+
+        .headline-white {
+
+            display: block;
+
+            color: #ffffff;
+        }
+
+
+        .headline-brown {
+
+            display: block;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #a9652b,
+                    #e0aa66,
+                    #9a5d29
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-clip: text;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .description {
+
+            max-width: 720px;
+
+            margin:
+                0 auto
+                48px;
+
+            color: #d1cbc4;
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            max-width: 1050px;
+
+            margin:
+                0 auto
+                40px;
+        }
+
+
+        .feature {
+
+            padding:
+                10px
+                30px;
+
+            border-right:
+                1px solid
+                rgba(255,255,255,.13);
+        }
+
+
+        .feature:last-child {
+
+            border-right: none;
+        }
+
+
+        .feature-icon {
+
+            height: 52px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #ce914e;
+
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .feature h3 {
+
+            font-size: 14px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+
+            color: #ffffff;
+        }
+
+
+        .feature p {
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            color: #a9a19a;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 10px;
+        }
+
+
+        .join-button {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width:
+                min(
+                    545px,
+                    90vw
+                );
+
+            padding:
+                21px
+                30px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                #9b642f;
+
+            text-decoration: none;
+
+            font-size: 17px;
+
+            font-weight: 700;
+
+            letter-spacing: 6px;
+
+            color: #ffffff;
+
+            background:
+
+                linear-gradient(
+                    105deg,
+                    #9a5c27 0%,
+                    #60391d 28%,
+                    #26170d 58%,
+                    #070504 100%
+                );
+
+            box-shadow:
+
+                inset
+                0 1px 0
+                rgba(255,255,255,.10),
+
+                0 14px 45px
+                rgba(0,0,0,.55);
+
+            transition:
+                all .25s ease;
+
+            cursor: pointer;
+        }
+
+
+        .join-button:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                #d59a55;
+
+            box-shadow:
+
+                0 18px 55px
+                rgba(130, 76, 27, .27),
+
+                inset
+                0 1px 0
+                rgba(255,255,255,.15);
+        }
+
+
+        .join-button.loading {
+
+            pointer-events: none;
+
+            opacity: .65;
+        }
+
+
+        .arrow {
+
+            font-size: 28px;
+
+            font-weight: 300;
+
+            margin-left: 18px;
+
+            line-height: 1;
+        }
+
+
+        /* =====================================================
+           SECURITY
+        ===================================================== */
+
+        .secure {
+
+            margin-top: 13px;
+
+            color: #aaa29a;
+
+            font-size: 14px;
+
+            letter-spacing: .5px;
+        }
+
+
+        .lock {
+
+            color: #d09851;
+
+            margin-right: 5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            margin-top: 35px;
+        }
+
+
+        .footer-brand {
+
+            font-size: 19px;
+
+            font-weight: 700;
+
+            color: #a96a2d;
+
+            margin-bottom: 9px;
+        }
+
+
+        footer p {
+
+            font-size: 12px;
+
+            color: #716b65;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           LOADER OVERLAY
+        ===================================================== */
+
+        .loader-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(95, 53, 22, .22),
+                    rgba(0,0,0,.98) 58%
+                );
+
+            backdrop-filter:
+                blur(14px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity .3s ease,
+                visibility .3s ease;
+        }
+
+
+        .loader-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .loader-content {
+
+            text-align: center;
+
+            animation:
+                loaderFade .4s ease forwards;
+        }
+
+
+        /* =====================================================
+           RING SPINNER
+        ===================================================== */
+
+        .ring-loader {
+
+            position: relative;
+
+            width: 76px;
+
+            height: 76px;
+
+            margin:
+                0 auto
+                25px;
+
+            border-radius: 50%;
+
+            border:
+                3px solid
+                rgba(255,255,255,.08);
+
+            border-top-color:
+                #e0aa68;
+
+            border-right-color:
+                #9a5d29;
+
+            border-bottom-color:
+                #4d2a13;
+
+            animation:
+                spin .8s
+                linear
+                infinite;
+
+            box-shadow:
+
+                0 0 25px
+                rgba(175, 105, 40, .18);
+        }
+
+
+        .ring-loader::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 52px;
+
+            height: 52px;
+
+            top: 9px;
+
+            left: 9px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(218,161,91,.18);
+        }
+
+
+        /* =====================================================
+           LOADER TEXT
+        ===================================================== */
+
+        .loader-title {
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .loader-text {
+
+            color: #958d85;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        @keyframes pageFade {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes loaderFade {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .page {
+
+                padding:
+                    35px
+                    18px;
+            }
+
+
+            .logo {
+
+                letter-spacing:
+                    -4px;
+            }
+
+
+            .tagline {
+
+                font-size: 10px;
+
+                letter-spacing: 3px;
+
+                line-height: 1.7;
+
+                margin-bottom: 35px;
+            }
+
+
+            h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .description {
+
+                font-size: 15px;
+
+                margin-bottom: 35px;
+            }
+
+
+            .features {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 25px 0;
+            }
+
+
+            .feature:nth-child(2) {
+
+                border-right: none;
+            }
+
+
+            .feature p {
+
+                font-size: 12px;
+            }
+
+
+            .join-button {
+
+                font-size: 14px;
+
+                letter-spacing: 3px;
+
+                padding:
+                    20px
+                    18px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo {
+
+                font-size: 55px;
+            }
+
+
+            h1 {
+
+                font-size: 42px;
+            }
+
+
+            .features {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .feature {
+
+                border-right: none;
+            }
+
+
+            .ring-loader {
+
+                width: 65px;
+
+                height: 65px;
+            }
+
+
+            .loader-title {
+
+                font-size: 11px;
+
+                letter-spacing: 3px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ===================================================== -->
+
+    <div class="background">
+
+        <div class="glow glow-left"></div>
+
+        <div class="glow glow-right"></div>
+
+        <div class="grid"></div>
+
+        <div class="wave one"></div>
+
+        <div class="wave two"></div>
+
+        <div class="wave three"></div>
+
+        <div class="wave four"></div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         LOADING OVERLAY
+    ===================================================== -->
+
+    <div
+        id="loaderOverlay"
+        class="loader-overlay"
+    >
+
+        <div class="loader-content">
+
+            <div class="ring-loader"></div>
+
+            <div class="loader-title">
+                CONNECTING TO FXVAULT
+            </div>
+
+            <div class="loader-text">
+                Securely redirecting you...
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN PAGE
+    ===================================================== -->
+
+    <main class="page">
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 LOGO
+            ================================================= -->
+
+            <div class="logo">
+
+                <span class="fx">
+                    Fx
+                </span>
+
+                <span class="vault">
+                    Vault
+                </span>
+
+            </div>
+
+
+            <div class="tagline">
+
+                Premium Forex Insights.
+                Consistent Results.
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DIVIDER
+            ================================================= -->
+
+            <div class="divider">
+
+                <span class="divider-line"></span>
+
+                <span class="divider-dot"></span>
+
+                <span
+                    class="divider-line right">
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 HEADLINE
+            ================================================= -->
+
+            <h1>
+
+                <span class="headline-white">
+                    Trade Smarter.
+                </span>
+
+                <span class="headline-brown">
+                    Stay Ahead.
+                </span>
+
+            </h1>
+
+
+
+            <!-- =================================================
+                 DESCRIPTION
+            ================================================= -->
+
+            <p class="description">
+
+                FxVault delivers high-quality forex setups,
+                market analysis and trading insights to help
+                you stay consistent in the markets.
+
+            </p>
+
+
+
+            <!-- =================================================
+                 FEATURES
+            ================================================= -->
+
+            <section class="features">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        DAILY SETUPS
+                    </h3>
+
+                    <p>
+                        High probability setups
+                        every trading day.
+                    </p>
+
+                </div>
+
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⌕
+                    </div>
+
+                    <h3>
+                        MARKET ANALYSIS
+                    </h3>
+
+                    <p>
+                        In-depth analysis of
+                        major forex pairs.
+                    </p>
+
+                </div>
+
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ♙
+                    </div>
+
+                    <h3>
+                        EXCLUSIVE CONTENT
+                    </h3>
+
+                    <p>
+                        Premium insights
+                        for serious traders.
+                    </p>
+
+                </div>
+
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ♧
+                    </div>
+
+                    <h3>
+                        PRIVATE COMMUNITY
+                    </h3>
+
+                    <p>
+                        Connect with like-minded
+                        traders and grow.
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CTA BUTTON
+            ================================================= -->
+
+            <div class="cta">
+
+                <a
+                    href="https://www.patreon.com/login?ru=%2Fcw%2Ffxvault"
+                    class="join-button"
+                    id="joinButton"
+                >
+
+                    JOIN FXVAULT
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SECURITY
+            ================================================= -->
+
+            <div class="secure">
+
+                <span class="lock">
+                    🔒
+                </span>
+
+                Secure. Private. Invite Only.
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================= -->
+
+            <footer>
+
+                <div class="footer-brand">
+                    FxVault
+                </div>
+
+                <p>
+                    © 2026 FxVault. All rights reserved.
+                </p>
+
+                <p>
+                    Not Financial Advice. Trade Responsibly.
+                </p>
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        const joinButton =
+            document.getElementById(
+                "joinButton"
+            );
+
+
+        const loaderOverlay =
+            document.getElementById(
+                "loaderOverlay"
+            );
+
+
+        joinButton.addEventListener(
+            "click",
+            function(event) {
+
+                /*
+                 * Stop immediate navigation.
+                 */
+
+                event.preventDefault();
+
+
+                /*
+                 * Prevent multiple clicks.
+                 */
+
+                joinButton.classList.add(
+                    "loading"
+                );
+
+
+                /*
+                 * Show loader.
+                 */
+
+                loaderOverlay.classList.add(
+                    "active"
+                );
+
+
+                /*
+                 * Redirect to Patreon
+                 * after 1.5 seconds.
+                 */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "https://www.patreon.com/login?ru=%2Fcw%2Ffxvault";
+
+                    },
+                    1500
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
+
