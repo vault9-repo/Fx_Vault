@@ -716,6 +716,15 @@ footer p {
 }
 
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BC335GSHF"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-6BC335GSHF");
+</script>
+
 </head>
 
 
@@ -1003,6 +1012,13 @@ joinButton.addEventListener(
 
         event.preventDefault();
 
+        // GA4: track the FxVault CTA click before redirecting
+        gtag("event", "join_fxvault_click", {
+            button_name: "Explore Market Analysis",
+            destination: patreonURL,
+            page_location: window.location.href
+        });
+
         joinButton.classList.add("loading");
 
         loaderOverlay.classList.add("active");
@@ -1021,6 +1037,30 @@ joinButton.addEventListener(
 );
 
 
+
+
+/* =========================
+   GENERAL CLICK TRACKING
+========================= */
+
+document.addEventListener("click", function(event) {
+    const target = event.target.closest("a, button");
+
+    if (!target || target.id === "joinButton") return;
+
+    const href = target.href || target.getAttribute("data-href") || "";
+    const label = (target.innerText || target.getAttribute("aria-label") || "")
+        .trim()
+        .replace(/\\s+/g, " ")
+        .slice(0, 100);
+
+    gtag("event", "element_click", {
+        element_type: target.tagName.toLowerCase(),
+        element_text: label,
+        destination: href,
+        page_location: window.location.href
+    });
+});
 
 
 /* =========================
