@@ -2,7 +2,7 @@
   "name": "fxvault-analytics-api",
   "version": "1.0.0",
   "private": true,
-  "description": "Secure GA4 Data API endpoint for the FxVault statistics dashboard",
+  "description": "FxVault GA4 click analytics",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
