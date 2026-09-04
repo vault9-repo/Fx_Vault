@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    name="description"
+    content="FxVault delivers daily forex setups, market analysis and trading insights."
+>
 
 <title>FxVault | Daily Forex Insights</title>
 
+
+<!-- =========================================================
+     GOOGLE ANALYTICS 4
+========================================================= -->
+
+<script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-6BC335GSHF">
+</script>
+
+<script>
+
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+
+gtag("config", "G-6BC335GSHF");
+
+</script>
+
+
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -25,19 +61,28 @@ body {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: #ffffff;
+
     background:
+
         radial-gradient(
             circle at 15% 35%,
             rgba(120, 70, 28, 0.16),
             transparent 32%
         ),
+
         radial-gradient(
             circle at 85% 70%,
             rgba(75, 40, 16, 0.12),
             transparent 30%
         ),
+
         linear-gradient(
             120deg,
             #020202 0%,
@@ -47,52 +92,80 @@ body {
         );
 
     min-height: 100vh;
+
     overflow-x: hidden;
 }
 
 
-/* =========================
+/* =========================================================
    BACKGROUND
-========================= */
+========================================================= */
 
 .background {
+
     position: fixed;
+
     inset: 0;
+
     z-index: 0;
+
     pointer-events: none;
+
     overflow: hidden;
 }
 
+
 .glow {
+
     position: absolute;
+
     width: 600px;
+
     height: 600px;
+
     border-radius: 50%;
+
     filter: blur(70px);
 }
 
+
 .glow-left {
+
     left: -420px;
+
     top: 10%;
-    background: rgba(145, 82, 30, 0.18);
+
+    background:
+        rgba(145, 82, 30, 0.18);
 }
+
 
 .glow-right {
+
     right: -420px;
+
     bottom: -15%;
-    background: rgba(95, 52, 21, 0.13);
+
+    background:
+        rgba(95, 52, 21, 0.13);
 }
 
+
 .grid {
+
     position: absolute;
+
     inset: 0;
+
     opacity: 0.035;
 
     background-image:
+
         linear-gradient(
             rgba(255,255,255,0.15) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(255,255,255,0.15) 1px,
@@ -102,103 +175,159 @@ body {
     background-size: 70px 70px;
 }
 
+
 .wave {
+
     position: absolute;
+
     width: 75%;
+
     height: 250px;
-    border-top: 1px solid rgba(174,108,46,0.10);
+
+    border-top:
+        1px solid rgba(174,108,46,0.10);
+
     border-radius: 50%;
 }
 
+
 .wave.one {
+
     left: -18%;
+
     bottom: 12%;
-    transform: rotate(-13deg);
+
+    transform:
+        rotate(-13deg);
 }
+
 
 .wave.two {
+
     left: -17%;
+
     bottom: 8%;
-    transform: rotate(-13deg);
+
+    transform:
+        rotate(-13deg);
+
     opacity: 0.35;
 }
+
 
 .wave.three {
+
     right: -18%;
+
     bottom: 12%;
-    transform: rotate(13deg);
+
+    transform:
+        rotate(13deg);
 }
 
+
 .wave.four {
+
     right: -17%;
+
     bottom: 8%;
-    transform: rotate(13deg);
+
+    transform:
+        rotate(13deg);
+
     opacity: 0.35;
 }
 
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 .page {
+
     position: relative;
+
     z-index: 2;
 
     min-height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 45px 20px;
 }
 
+
 .container {
+
     width: 100%;
+
     max-width: 1200px;
+
     text-align: center;
 
-    animation: pageFade 1s ease forwards;
+    animation:
+        pageFade 1s ease forwards;
 }
 
 
-/* =========================
+/* =========================================================
    LOGO
-========================= */
+========================================================= */
 
 .logo {
-    font-size: clamp(58px, 8vw, 105px);
+
+    font-size:
+        clamp(58px, 8vw, 105px);
+
     font-weight: 900;
+
     line-height: 1;
+
     letter-spacing: -6px;
+
     margin-bottom: 18px;
 }
 
+
 .logo .fx {
-    background: linear-gradient(
-        100deg,
-        #ffffff,
-        #f2eee9
-    );
+
+    background:
+
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #f2eee9
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
     background-clip: text;
 }
 
+
 .logo .vault {
-    background: linear-gradient(
-        100deg,
-        #d9a05a 0%,
-        #c48745 25%,
-        #ad7035 50%,
-        #965b28 75%,
-        #805022 100%
-    );
+
+    background:
+
+        linear-gradient(
+            100deg,
+            #d9a05a 0%,
+            #c48745 25%,
+            #ad7035 50%,
+            #965b28 75%,
+            #805022 100%
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
     background-clip: text;
 
     text-shadow:
@@ -206,36 +335,50 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    TAGLINE
-========================= */
+========================================================= */
 
 .tagline {
+
     font-size: 13px;
+
     letter-spacing: 6px;
+
     text-transform: uppercase;
+
     color: #ded9d2;
+
     margin-bottom: 42px;
 }
 
 
-/* =========================
+/* =========================================================
    DIVIDER
-========================= */
+========================================================= */
 
 .divider {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 14px;
+
     margin-bottom: 25px;
 }
 
+
 .divider-line {
+
     width: 55px;
+
     height: 1px;
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -243,8 +386,11 @@ body {
         );
 }
 
+
 .divider-line.right {
+
     background:
+
         linear-gradient(
             90deg,
             #b97532,
@@ -252,9 +398,13 @@ body {
         );
 }
 
+
 .divider-dot {
+
     width: 13px;
+
     height: 13px;
+
     border-radius: 50%;
 
     background: #c7833e;
@@ -264,11 +414,12 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    HEADLINE
-========================= */
+========================================================= */
 
 h1 {
+
     font-family:
         Georgia,
         "Times New Roman",
@@ -278,20 +429,27 @@ h1 {
         clamp(45px, 6vw, 78px);
 
     line-height: 0.98;
+
     letter-spacing: -3px;
 
     margin-bottom: 32px;
 }
 
+
 .headline-white {
+
     display: block;
+
     color: #ffffff;
 }
 
+
 .headline-brown {
+
     display: block;
 
     background:
+
         linear-gradient(
             90deg,
             #a9652b,
@@ -300,16 +458,19 @@ h1 {
         );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
     background-clip: text;
 }
 
 
-/* =========================
+/* =========================================================
    DESCRIPTION
-========================= */
+========================================================= */
 
 .description {
+
     max-width: 720px;
 
     margin:
@@ -318,34 +479,44 @@ h1 {
     color: #d1cbc4;
 
     font-size: 18px;
+
     line-height: 1.75;
 }
 
 
-/* =========================
+/* =========================================================
    BUTTONS
-========================= */
+========================================================= */
 
 .buttons {
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
+
 .main-cta {
+
     margin-bottom: 42px;
 }
 
 
-/* =========================
-   JOIN BUTTON
-========================= */
+/* =========================================================
+   BUTTON
+========================================================= */
 
 .join-button {
-    width: min(545px, 90vw);
+
+    width:
+        min(545px, 90vw);
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 21px 30px;
@@ -358,13 +529,15 @@ h1 {
     text-decoration: none;
 
     font-size: 17px;
+
     font-weight: 700;
 
-    letter-spacing: 6px;
+    letter-spacing: 4px;
 
     color: #ffffff;
 
     background:
+
         linear-gradient(
             105deg,
             #9a5c27 0%,
@@ -374,40 +547,105 @@ h1 {
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        0 14px 45px rgba(0,0,0,0.55);
+
+        inset
+        0 1px 0
+        rgba(255,255,255,0.10),
+
+        0 14px 45px
+        rgba(0,0,0,0.55);
 
     transition:
+
         transform 0.25s ease,
+
         box-shadow 0.25s ease,
+
         border-color 0.25s ease;
 }
 
-.join-button:hover {
-    transform: translateY(-4px);
 
-    border-color: #d59a55;
+.join-button:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #d59a55;
 
     box-shadow:
-        0 18px 55px rgba(130,76,27,0.28);
+
+        0 18px 55px
+        rgba(130,76,27,0.28);
 }
 
+
 .join-button.loading {
+
     pointer-events: none;
+
     opacity: 0.6;
 }
 
+
 .arrow {
+
     font-size: 27px;
+
     margin-left: 18px;
 }
 
 
-/* =========================
+/* =========================================================
+   FACEBOOK BUTTON
+========================================================= */
+
+.facebook-button {
+
+    margin-top: 14px;
+
+    border-color:
+        rgba(255,255,255,0.20);
+
+    background:
+
+        linear-gradient(
+            105deg,
+            #181818 0%,
+            #0d0d0d 50%,
+            #050505 100%
+        );
+}
+
+
+/* =========================================================
+   APP BUTTON
+========================================================= */
+
+.app-button {
+
+    margin-top: 14px;
+
+    border-color:
+        rgba(174,108,46,0.35);
+
+    background:
+
+        linear-gradient(
+            105deg,
+            #4b2d18 0%,
+            #21140c 45%,
+            #070504 100%
+        );
+}
+
+
+/* =========================================================
    FEATURES
-========================= */
+========================================================= */
 
 .features {
+
     display: grid;
 
     grid-template-columns:
@@ -419,23 +657,33 @@ h1 {
         0 auto 40px;
 }
 
+
 .feature {
+
     padding:
         10px 30px;
 
     border-right:
-        1px solid rgba(255,255,255,0.13);
+        1px solid
+        rgba(255,255,255,0.13);
 }
+
 
 .feature:last-child {
-    border-right: none;
+
+    border-right:
+        none;
 }
 
+
 .feature-icon {
+
     height: 52px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 32px;
@@ -445,7 +693,9 @@ h1 {
     margin-bottom: 12px;
 }
 
+
 .feature h3 {
+
     font-size: 14px;
 
     letter-spacing: 2px;
@@ -455,7 +705,9 @@ h1 {
     color: #ffffff;
 }
 
+
 .feature p {
+
     font-size: 14px;
 
     line-height: 1.6;
@@ -464,14 +716,12 @@ h1 {
 }
 
 
-
-
-
-/* =========================
+/* =========================================================
    SECURITY
-========================= */
+========================================================= */
 
 .secure {
+
     margin-top: 14px;
 
     color: #aaa29a;
@@ -479,22 +729,29 @@ h1 {
     font-size: 14px;
 }
 
+
 .lock {
+
     color: #d09851;
+
     margin-right: 5px;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
+
     margin-top: 35px;
 }
 
+
 .footer-brand {
+
     font-size: 19px;
+
     font-weight: 700;
 
     color: #a96a2d;
@@ -502,7 +759,9 @@ footer {
     margin-bottom: 9px;
 }
 
+
 footer p {
+
     font-size: 12px;
 
     color: #716b65;
@@ -511,11 +770,12 @@ footer p {
 }
 
 
-/* =========================
+/* =========================================================
    LOADER
-========================= */
+========================================================= */
 
 .loader-overlay {
+
     position: fixed;
 
     inset: 0;
@@ -523,37 +783,52 @@ footer p {
     z-index: 99999;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background:
+
         radial-gradient(
             circle,
             rgba(95,53,22,0.20),
             rgba(0,0,0,0.98) 60%
         );
 
-    backdrop-filter: blur(14px);
+    backdrop-filter:
+        blur(14px);
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
+
         opacity 0.3s ease,
+
         visibility 0.3s ease;
 }
 
+
 .loader-overlay.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
+
 .loader-content {
+
     text-align: center;
 }
 
+
 .ring-loader {
+
     width: 76px;
+
     height: 76px;
 
     margin:
@@ -562,20 +837,29 @@ footer p {
     border-radius: 50%;
 
     border:
-        3px solid rgba(255,255,255,0.08);
+        3px solid
+        rgba(255,255,255,0.08);
 
-    border-top-color: #e0aa68;
-    border-right-color: #9a5d29;
-    border-bottom-color: #4d2a13;
+    border-top-color:
+        #e0aa68;
+
+    border-right-color:
+        #9a5d29;
+
+    border-bottom-color:
+        #4d2a13;
 
     animation:
         spin 0.8s linear infinite;
 
     box-shadow:
-        0 0 25px rgba(175,105,40,0.18);
+        0 0 25px
+        rgba(175,105,40,0.18);
 }
 
+
 .loader-title {
+
     color: #ffffff;
 
     font-size: 14px;
@@ -587,7 +871,9 @@ footer p {
     margin-bottom: 10px;
 }
 
+
 .loader-text {
+
     color: #958d85;
 
     font-size: 13px;
@@ -596,134 +882,195 @@ footer p {
 }
 
 
-/* =========================
+/* =========================================================
    ANIMATIONS
-========================= */
+========================================================= */
 
 @keyframes spin {
+
     from {
-        transform: rotate(0deg);
+        transform:
+            rotate(0deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform:
+            rotate(360deg);
     }
 }
+
 
 @keyframes pageFade {
+
     from {
+
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+            translateY(25px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
     .page {
-        padding: 35px 18px;
+
+        padding:
+            35px 18px;
     }
+
 
     .logo {
-        letter-spacing: -4px;
+
+        letter-spacing:
+            -4px;
     }
+
 
     .tagline {
-        font-size: 10px;
-        letter-spacing: 3px;
-        line-height: 1.7;
-        margin-bottom: 35px;
+
+        font-size:
+            10px;
+
+        letter-spacing:
+            3px;
+
+        line-height:
+            1.7;
+
+        margin-bottom:
+            35px;
     }
+
 
     h1 {
-        font-size: 48px;
-        letter-spacing: -2px;
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            -2px;
     }
+
 
     .description {
-        font-size: 15px;
-        margin-bottom: 30px;
+
+        font-size:
+            15px;
+
+        margin-bottom:
+            30px;
     }
 
+
     .features {
+
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 25px 0;
+        gap:
+            25px 0;
     }
+
 
     .feature:nth-child(2) {
-        border-right: none;
+
+        border-right:
+            none;
     }
+
 
     .feature p {
-        font-size: 12px;
+
+        font-size:
+            12px;
     }
 
+
     .join-button {
-        font-size: 14px;
-        letter-spacing: 3px;
+
+        font-size:
+            13px;
+
+        letter-spacing:
+            2px;
+
+        padding:
+            19px 20px;
     }
+
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 480px) {
 
     .logo {
-        font-size: 55px;
+
+        font-size:
+            55px;
     }
+
 
     h1 {
-        font-size: 42px;
+
+        font-size:
+            42px;
     }
+
 
     .features {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
+
 
     .feature {
-        border-right: none;
+
+        border-right:
+            none;
     }
 
-    .download-button {
-        font-size: 12px;
-        letter-spacing: 2px;
-        padding: 15px 18px;
-    }
 
     .ring-loader {
-        width: 65px;
-        height: 65px;
+
+        width:
+            65px;
+
+        height:
+            65px;
     }
 
+
     .loader-title {
-        font-size: 11px;
-        letter-spacing: 3px;
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            3px;
     }
+
 }
 
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BC335GSHF"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-6BC335GSHF");
-</script>
 
 </head>
 
@@ -731,9 +1078,9 @@ footer p {
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      BACKGROUND
-========================= -->
+========================================================= -->
 
 <div class="background">
 
@@ -754,9 +1101,9 @@ footer p {
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      LOADER
-========================= -->
+========================================================= -->
 
 <div
     id="loaderOverlay"
@@ -767,11 +1114,17 @@ footer p {
 
         <div class="ring-loader"></div>
 
-        <div class="loader-title">
+        <div
+            id="loaderTitle"
+            class="loader-title"
+        >
             CONNECTING TO FXVAULT
         </div>
 
-        <div class="loader-text">
+        <div
+            id="loaderText"
+            class="loader-text"
+        >
             Securely redirecting you...
         </div>
 
@@ -780,9 +1133,9 @@ footer p {
 </div>
 
 
-<!-- =========================
-     PAGE
-========================= -->
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
 
 <main class="page">
 
@@ -793,13 +1146,24 @@ footer p {
 
         <div class="logo">
 
-            <span class="fx">Fx</span><span class="vault">Vault</span>
+            <span class="fx">
+                Fx
+            </span>
+
+            <span class="vault">
+                Vault
+            </span>
 
         </div>
 
 
+        <!-- TAGLINE -->
+
         <div class="tagline">
-            Premium Forex Insights. Consistent Results.
+
+            Premium Forex Insights.
+            Consistent Results.
+
         </div>
 
 
@@ -842,26 +1206,88 @@ footer p {
         </p>
 
 
-        <!-- JOIN BUTTON -->
+        <!-- =================================================
+             CTA BUTTONS
+        ================================================= -->
 
         <div class="buttons main-cta">
 
+
+            <!-- PATREON -->
+
             <a
+
                 href="https://patreon.com/fxvault?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
+
                 class="join-button"
+
                 id="joinButton"
+
+                data-track-name="Explore Market Analysis"
+
             >
 
                 Explore Market Analysis
 
-                <span class="arrow">→</span>
+                <span class="arrow">
+                    →
+                </span>
 
             </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+
+                href="https://www.facebook.com/profile.php?id=61593843365990"
+
+                class="join-button facebook-button"
+
+                id="facebookButton"
+
+                data-track-name="Visit FxVault Facebook Page"
+
+            >
+
+                Visit FxVault Facebook Page
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- APP DOWNLOAD -->
+
+            <a
+
+                href="https://median.co/share/qdpalrz#apk"
+
+                class="join-button app-button"
+
+                id="downloadButton"
+
+                data-track-name="Download FxVault App"
+
+            >
+
+                Download FxVault App
+
+                <span class="arrow">
+                    ↓
+                </span>
+
+            </a>
+
 
         </div>
 
 
-        <!-- FEATURES -->
+        <!-- =================================================
+             FEATURES
+        ================================================= -->
 
         <section class="features">
 
@@ -941,14 +1367,13 @@ footer p {
         </section>
 
 
-       
-
-
         <!-- SECURITY -->
 
         <div class="secure">
 
-            <span class="lock">🔒</span>
+            <span class="lock">
+                🔒
+            </span>
 
             Secure. Private. Invite Only.
 
@@ -964,11 +1389,13 @@ footer p {
             </div>
 
             <p>
-                © 2026 FxVault. All rights reserved.
+                © 2026 FxVault.
+                All rights reserved.
             </p>
 
             <p>
-                Not Financial Advice. Trade Responsibly.
+                Not Financial Advice.
+                Trade Responsibly.
             </p>
 
         </footer>
@@ -979,101 +1406,472 @@ footer p {
 </main>
 
 
-<!-- =========================
+<!-- =========================================================
      JAVASCRIPT
-========================= -->
+========================================================= -->
 
 <script>
 
+/* =========================================================
+   DESTINATIONS
+========================================================= */
+
 const patreonURL =
     "https://patreon.com/fxvault?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink";
+
+
+const facebookURL =
+    "https://www.facebook.com/profile.php?id=61593843365990";
+
 
 const appURL =
     "https://median.co/share/qdpalrz#apk";
 
 
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
 const joinButton =
     document.getElementById("joinButton");
 
+
+const facebookButton =
+    document.getElementById("facebookButton");
+
+
 const downloadButton =
     document.getElementById("downloadButton");
+
 
 const loaderOverlay =
     document.getElementById("loaderOverlay");
 
 
-/* =========================
-   JOIN FXVAULT
-========================= */
+const loaderTitle =
+    document.getElementById("loaderTitle");
 
-joinButton.addEventListener(
+
+const loaderText =
+    document.getElementById("loaderText");
+
+
+/* =========================================================
+   SAFE GA4 EVENT FUNCTION
+========================================================= */
+
+function trackEvent(
+    eventName,
+    parameters = {}
+) {
+
+    if (
+        typeof window.gtag === "function"
+    ) {
+
+        gtag(
+            "event",
+            eventName,
+            parameters
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW LOADER
+========================================================= */
+
+function showLoader(
+    title,
+    text
+) {
+
+    if (loaderTitle) {
+
+        loaderTitle.textContent =
+            title;
+    }
+
+
+    if (loaderText) {
+
+        loaderText.textContent =
+            text;
+    }
+
+
+    if (loaderOverlay) {
+
+        loaderOverlay.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   HIDE LOADER
+========================================================= */
+
+function hideLoader() {
+
+    if (loaderOverlay) {
+
+        loaderOverlay.classList.remove(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PATREON / FXVAULT CLICK
+========================================================= */
+
+if (joinButton) {
+
+    joinButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+
+            trackEvent(
+                "join_fxvault_click",
+                {
+
+                    button_name:
+                        "Explore Market Analysis",
+
+                    destination:
+                        patreonURL,
+
+                    page_location:
+                        window.location.href,
+
+                    page_title:
+                        document.title
+
+                }
+            );
+
+
+            joinButton.classList.add(
+                "loading"
+            );
+
+
+            showLoader(
+                "CONNECTING TO FXVAULT",
+                "Securely redirecting you..."
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        patreonURL;
+
+                },
+                1000
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FACEBOOK PAGE CLICK
+========================================================= */
+
+if (facebookButton) {
+
+    facebookButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+
+            trackEvent(
+                "facebook_page_click",
+                {
+
+                    button_name:
+                        "Visit FxVault Facebook Page",
+
+                    destination:
+                        facebookURL,
+
+                    page_location:
+                        window.location.href,
+
+                    page_title:
+                        document.title
+
+                }
+            );
+
+
+            facebookButton.classList.add(
+                "loading"
+            );
+
+
+            showLoader(
+                "OPENING FACEBOOK",
+                "Taking you to the FxVault Facebook page..."
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        facebookURL;
+
+                },
+                700
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   APP DOWNLOAD CLICK
+========================================================= */
+
+if (downloadButton) {
+
+    downloadButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+
+            trackEvent(
+                "fxvault_app_download_click",
+                {
+
+                    button_name:
+                        "Download FxVault App",
+
+                    destination:
+                        appURL,
+
+                    page_location:
+                        window.location.href,
+
+                    page_title:
+                        document.title
+
+                }
+            );
+
+
+            downloadButton.classList.add(
+                "loading"
+            );
+
+
+            showLoader(
+                "PREPARING FXVAULT APP",
+                "Opening the official app download..."
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        appURL;
+
+                },
+                700
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GENERAL CLICK TRACKING
+========================================================= */
+
+document.addEventListener(
     "click",
     function(event) {
 
-        event.preventDefault();
+        const target =
+            event.target.closest(
+                "a, button"
+            );
 
-        // GA4: track the FxVault CTA click before redirecting
-        gtag("event", "join_fxvault_click", {
-            button_name: "Explore Market Analysis",
-            destination: patreonURL,
-            page_location: window.location.href
-        });
 
-        joinButton.classList.add("loading");
+        if (!target) {
 
-        loaderOverlay.classList.add("active");
+            return;
+        }
 
-        setTimeout(
-            function() {
 
-                window.location.href =
-                    patreonURL;
+        /*
+         * Dedicated buttons already have
+         * their own GA4 tracking.
+         */
 
-            },
-            1200
+        if (
+
+            target.id ===
+                "joinButton"
+
+            ||
+
+            target.id ===
+                "facebookButton"
+
+            ||
+
+            target.id ===
+                "downloadButton"
+
+        ) {
+
+            return;
+
+        }
+
+
+        const href =
+            target.href ||
+            target.getAttribute(
+                "data-href"
+            ) ||
+            "";
+
+
+        const label = (
+
+            target.innerText ||
+
+            target.getAttribute(
+                "aria-label"
+            ) ||
+
+            target.getAttribute(
+                "data-track-name"
+            ) ||
+
+            ""
+
+        )
+        .trim()
+        .replace(
+            /\s+/g,
+            " "
+        )
+        .slice(
+            0,
+            100
+        );
+
+
+        trackEvent(
+            "element_click",
+            {
+
+                element_type:
+                    target.tagName.toLowerCase(),
+
+                element_text:
+                    label,
+
+                destination:
+                    href,
+
+                page_location:
+                    window.location.href,
+
+                page_title:
+                    document.title
+
+            }
         );
 
     }
 );
 
 
-
-
-/* =========================
-   GENERAL CLICK TRACKING
-========================= */
-
-document.addEventListener("click", function(event) {
-    const target = event.target.closest("a, button");
-
-    if (!target || target.id === "joinButton") return;
-
-    const href = target.href || target.getAttribute("data-href") || "";
-    const label = (target.innerText || target.getAttribute("aria-label") || "")
-        .trim()
-        .replace(/\\s+/g, " ")
-        .slice(0, 100);
-
-    gtag("event", "element_click", {
-        element_type: target.tagName.toLowerCase(),
-        element_text: label,
-        destination: href,
-        page_location: window.location.href
-    });
-});
-
-
-/* =========================
+/* =========================================================
    PAGE RESTORE
-========================= */
+========================================================= */
 
 window.addEventListener(
     "pageshow",
     function() {
 
-        loaderOverlay.classList.remove("active");
+        hideLoader();
 
-        joinButton.classList.remove("loading");
+
+        if (joinButton) {
+
+            joinButton.classList.remove(
+                "loading"
+            );
+
+        }
+
+
+        if (facebookButton) {
+
+            facebookButton.classList.remove(
+                "loading"
+            );
+
+        }
+
+
+        if (downloadButton) {
+
+            downloadButton.classList.remove(
+                "loading"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   OPTIONAL: TRACK PAGE VIEW
+========================================================= */
+
+trackEvent(
+    "fxvault_landing_page_view",
+    {
+
+        page_title:
+            document.title,
+
+        page_location:
+            window.location.href
 
     }
 );
@@ -1082,4 +1880,5 @@ window.addEventListener(
 
 
 </body>
+
 </html>
