@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FxVault | Analytics Dashboard</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BC335GSHF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BC335GSHF');
+</script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+  color:#fff;
+  background:
+    radial-gradient(circle at 10% 15%,rgba(155,92,39,.16),transparent 30%),
+    radial-gradient(circle at 90% 85%,rgba(110,60,22,.12),transparent 28%),
+    linear-gradient(125deg,#020202,#0b0806 48%,#030303);
+}
+.container{width:min(1100px,92%);margin:auto;padding:45px 0}
+.header{text-align:center;margin-bottom:35px}
+.logo{font-size:42px;font-weight:900;letter-spacing:-2px}
+.logo span{color:#d29a59}
+.subtitle{margin-top:9px;color:#99918a;font-size:13px;letter-spacing:3px;text-transform:uppercase}
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+button,.range{
+  border:1px solid #74471f;background:#17100b;color:#eee;
+  border-radius:9px;padding:12px 18px;font-weight:700;cursor:pointer
+}
+button:hover{border-color:#c88a4b}
+button.active{background:linear-gradient(105deg,#9a5c27,#26170d);border-color:#bd7c3e}
+.status{text-align:center;color:#888;font-size:12px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{
+  background:linear-gradient(145deg,rgba(30,21,14,.92),rgba(8,7,6,.95));
+  border:1px solid rgba(190,125,61,.25);
+  border-radius:15px;padding:22px;
+  box-shadow:0 12px 35px rgba(0,0,0,.35)
+}
+.label{font-size:11px;color:#9d958d;letter-spacing:1.5px;text-transform:uppercase}
+.value{font-size:34px;font-weight:800;margin-top:12px}
+.small{font-size:12px;color:#777;margin-top:7px}
+.section{
+  margin-top:25px;
+  background:rgba(12,10,8,.86);
+  border:1px solid rgba(190,125,61,.2);
+  border-radius:15px;padding:24px
+}
+.section h2{font-size:17px;margin-bottom:18px}
+.event-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.07)
+}
+.event-row:last-child{border-bottom:0}
+.event-name{font-weight:700}
+.event-desc{font-size:12px;color:#777;margin-top:4px}
+.event-count{font-size:22px;font-weight:800;color:#d39a58}
+.note{margin-top:20px;color:#777;font-size:12px;line-height:1.7;text-align:center}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.container{padding:28px 0}.logo{font-size:34px}.grid{grid-template-columns:1fr}.card{padding:18px}}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <header class="header">
+    <div class="logo">Fx<span>Vault</span></div>
+    <div class="subtitle">Analytics Dashboard</div>
+  </header>
+
+  <div class="controls">
+    <button class="active" data-range="today">Today</button>
+    <button data-range="7">7 Days</button>
+    <button data-range="30">30 Days</button>
+    <button data-range="all">All Time</button>
+    <button id="refresh">Refresh</button>
+  </div>
+
+  <div class="status" id="status">Dashboard ready. Connect your GA4 Data API endpoint to display live totals.</div>
+
+  <section class="grid">
+    <div class="card">
+      <div class="label">Visitors</div>
+      <div class="value" id="visitors">—</div>
+      <div class="small">Active users</div>
+    </div>
+    <div class="card">
+      <div class="label">Market Analysis Clicks</div>
+      <div class="value" id="marketClicks">—</div>
+      <div class="small">join_fxvault_click</div>
+    </div>
+    <div class="card">
+      <div class="label">Patreon Clicks</div>
+      <div class="value" id="patreonClicks">—</div>
+      <div class="small">patreon_click</div>
+    </div>
+    <div class="card">
+      <div class="label">App Downloads</div>
+      <div class="value" id="appDownloads">—</div>
+      <div class="small">app_download_click</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Tracked Events</h2>
+
+    <div class="event-row">
+      <div>
+        <div class="event-name">Explore Market Analysis</div>
+        <div class="event-desc">join_fxvault_click</div>
+      </div>
+      <div class="event-count" id="eventJoin">—</div>
+    </div>
+
+    <div class="event-row">
+      <div>
+        <div class="event-name">Patreon</div>
+        <div class="event-desc">patreon_click</div>
+      </div>
+      <div class="event-count" id="eventPatreon">—</div>
+    </div>
+
+    <div class="event-row">
+      <div>
+        <div class="event-name">FxVault App</div>
+        <div class="event-desc">app_download_click</div>
+      </div>
+      <div class="event-count" id="eventApp">—</div>
+    </div>
+
+    <div class="event-row">
+      <div>
+        <div class="event-name">Other tracked elements</div>
+        <div class="event-desc">element_click</div>
+      </div>
+      <div class="event-count" id="eventOther">—</div>
+    </div>
+  </section>
+
+  <div class="note">
+    Measurement ID: G-6BC335GSHF<br>
+    This page is a dashboard interface. Live historical GA4 numbers require a secure server-side GA4 Data API endpoint.
+  </div>
+</div>
+
+<script>
+/*
+  IMPORTANT:
+  A browser page cannot safely contain your Google service-account credentials.
+  When your backend endpoint is ready, replace the URL below with your endpoint.
+
+  Expected JSON:
+  {
+    "visitors": 128,
+    "join_fxvault_click": 43,
+    "patreon_click": 31,
+    "app_download_click": 8,
+    "element_click": 17
+  }
+*/
+
+const API_URL = "/api/analytics";
+
+const buttons = document.querySelectorAll("[data-range]");
+const statusEl = document.getElementById("status");
+
+function setValue(id, value){
+  document.getElementById(id).textContent =
+    value === undefined || value === null ? "—" : Number(value).toLocaleString();
+}
+
+async function loadStats(range="today"){
+  statusEl.textContent = "Loading analytics…";
+
+  try{
+    const response = await fetch(`${API_URL}?range=${encodeURIComponent(range)}`, {
+      cache: "no-store"
+    });
+
+    if(!response.ok) throw new Error("Analytics endpoint unavailable");
+
+    const data = await response.json();
+
+    setValue("visitors", data.visitors);
+    setValue("marketClicks", data.join_fxvault_click);
+    setValue("patreonClicks", data.patreon_click);
+    setValue("appDownloads", data.app_download_click);
+
+    setValue("eventJoin", data.join_fxvault_click);
+    setValue("eventPatreon", data.patreon_click);
+    setValue("eventApp", data.app_download_click);
+    setValue("eventOther", data.element_click);
+
+    statusEl.textContent =
+      "Last updated: " + new Date().toLocaleTimeString();
+  }catch(error){
+    statusEl.textContent =
+      "Live GA4 data is not connected yet. Add the secure /api/analytics endpoint.";
+  }
+}
+
+buttons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    loadStats(button.dataset.range);
+  });
+});
+
+document.getElementById("refresh").addEventListener("click",()=>{
+  const active = document.querySelector("[data-range].active");
+  loadStats(active ? active.dataset.range : "today");
+});
+
+loadStats("today");
+</script>
+</body>
+</html>
